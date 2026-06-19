@@ -39,8 +39,10 @@ pids/
 # ESLint cache
 .eslintcache
 
-# Playwright MCP logs
+# Playwright MCP logs and screenshots
 .playwright-mcp/
+*.png
+!connect5-classic.png
 
 # Node REPL history
 .node_repl_history
