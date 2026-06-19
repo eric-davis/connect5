@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 5</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="screen-home" class="screen active">
+        <h1>Connect 5</h1>
+        <button id="btn-vs-ai">vs Computer</button>
+        <button id="btn-vs-local">vs Local Player</button>
+        <button id="btn-vs-online">vs Online Player</button>
+    </div>
+
+    <div id="screen-setup" class="screen">
+        <h2>Select Board Size</h2>
+        <div class="btn-group">
+            <button data-size="7x8" class="size-btn">7&times;8</button>
+            <button data-size="9x9" class="size-btn">9&times;9</button>
+            <button data-size="10x10" class="size-btn">10&times;10</button>
+        </div>
+        <div id="difficulty-section" class="hidden">
+            <h3>Select Difficulty</h3>
+            <div class="btn-group">
+                <button data-difficulty="easy" class="difficulty-btn">Easy</button>
+                <button data-difficulty="medium" class="difficulty-btn">Medium</button>
+                <button data-difficulty="hard" class="difficulty-btn">Hard</button>
+            </div>
+        </div>
+        <div class="action-row">
+            <button id="btn-start">Start Game</button>
+            <button id="btn-setup-back" class="btn-secondary">Back</button>
+        </div>
+    </div>
+
+    <div id="screen-online-lobby" class="screen">
+        <h2>Online Multiplayer</h2>
+        <button id="btn-create-room">Create Room</button>
+        <button id="btn-find-opponent">Find Opponent</button>
+        <div class="lobby-divider">— or —</div>
+        <div class="join-room-row">
+            <input id="room-code-input" placeholder="Enter room code" maxlength="4">
+            <button id="btn-join-room">Join Game</button>
+        </div>
+        <button id="btn-lobby-back" class="btn-secondary">Back</button>
+    </div>
+
+    <div id="screen-waiting-room" class="screen">
+        <h2>Waiting for Opponent</h2>
+        <p>Share this code with your friend:</p>
+        <div class="room-code-box">
+            <span id="room-code-display"></span>
+            <button id="btn-copy-code">Copy</button>
+        </div>
+        <div class="spinner"></div>
+        <button id="btn-cancel-waiting" class="btn-secondary">Cancel</button>
+    </div>
+
+    <div id="screen-matchmaking" class="screen">
+        <h2>Finding Opponent...</h2>
+        <div class="spinner"></div>
+        <button id="btn-cancel-queue" class="btn-secondary">Cancel</button>
+    </div>
+
+    <div id="screen-game" class="screen">
+        <header class="game-header">
+            <div class="player-label p1" id="player1-label">Player 1</div>
+            <div id="turn-indicator"></div>
+            <div class="header-controls">
+                <button id="btn-mute" class="btn-secondary btn-sm" title="Toggle sound">🔊</button>
+                <button id="btn-quit-game" class="btn-secondary btn-sm">Quit</button>
+            </div>
+            <div class="player-label p2" id="player2-label">Player 2</div>
+        </header>
+        <div class="canvas-container">
+            <canvas id="game-canvas"></canvas>
+            <div id="gameover-overlay">
+                <h2 id="gameover-text"></h2>
+                <p id="waiting-rematch-text" class="hidden"></p>
+                <button id="btn-play-again">Play Again</button>
+                <button id="btn-main-menu" class="btn-secondary">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="connection-banner" class="hidden">
+      <span id="connection-banner-text"></span>
+    </div>
+    <div id="toast"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/ai.js"></script>
+    <script src="/js/renderer.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/socket-client.js"></script>
+    <script src="/js/sound.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
