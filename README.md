@@ -12,6 +12,10 @@ Browser-based Connect-5 game (5-in-a-row variant of Connect 4) with AI and onlin
 - Web Audio API sound effects (no audio files required)
 - Dark theme UI, zero third-party frontend frameworks
 
+## Screenshot
+
+![Gameplay](connect5-classic.png)
+
 ## Tech Stack
 
 - **Backend:** Node.js, Express 4.x, Socket.IO 4.x
@@ -38,9 +42,9 @@ PORT=8080 npm start
 
 ## Game Modes
 
-- **vs Computer** — Single-player against an AI opponent. Easy uses random moves; medium searches 4 plies; hard searches 7 plies with center-weighted move ordering.
+- **vs Computer** — Single-player against an AI opponent. Easy uses random moves; medium searches 4 plies with center-weighted move ordering; hard searches 7 plies with center-weighted move ordering.
 - **vs Local Player** — Two players on the same device alternate turns.
-- **vs Online** — Real-time multiplayer. Create a room and share the 4-character code, or join the matchmaking queue to find a random opponent.
+- **vs Online** — Real-time multiplayer. Create a room and share the 4-character code, or join the matchmaking queue to find a random opponent. There is a 60-second turn timer — if a player exceeds it, they forfeit the game. After a game ends, both players can vote to rematch and play again.
 
 ## Project Structure
 
