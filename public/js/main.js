@@ -1,3 +1,5 @@
+const VERSION = '0.0.0';
+
 document.addEventListener('DOMContentLoaded', () => {
   let gameMode = null;
   let boardSizeKey = '9x9';

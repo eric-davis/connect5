@@ -1,0 +1,14 @@
+[Unit]
+Description=Connect5 Game Server
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/var/www/esdavis.dev/connect5
+Environment=PORT=8765
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
