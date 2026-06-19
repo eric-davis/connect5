@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     Renderer.init(board);
     Renderer.currentPlayer = 1;
+    Renderer.myPlayer = null;
+    Renderer.gameMode = gameMode;
     Renderer.onColumnClick = handleColumnClick;
   }
 
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(countdownInterval);
     countdownInterval = setInterval(() => {
       const secsLeft = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-      UI.setTurnIndicator(currentPlayer, secsLeft);
+      UI.setTurnIndicator(currentPlayer, secsLeft, myPlayer);
       if (secsLeft <= 0 || gameOver) clearInterval(countdownInterval);
     }, 1000);
   }
@@ -250,13 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
       myPlayer === 1 ? 'Red (You)' : 'Red (Opp)',
       myPlayer === 2 ? 'Yellow (You)' : 'Yellow (Opp)'
     );
-    UI.setTurnIndicator(currentPlayer);
+    UI.setTurnIndicator(currentPlayer, undefined, myPlayer);
     if (gameMode === 'online' && data.turnDeadline) startCountdown(data.turnDeadline);
     UI.hideGameover();
     UI.showScreen('screen-game');
 
     Renderer.init(board);
     Renderer.currentPlayer = currentPlayer;
+    Renderer.myPlayer = myPlayer;
+    Renderer.gameMode = 'online';
     Renderer.onColumnClick = handleColumnClick;
   });
 
@@ -281,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         currentPlayer = nextPlayer;
         Renderer.currentPlayer = currentPlayer;
-        UI.setTurnIndicator(currentPlayer);
+        UI.setTurnIndicator(currentPlayer, undefined, myPlayer);
         if (gameMode === 'online' && data.turnDeadline) startCountdown(data.turnDeadline);
       }
     });

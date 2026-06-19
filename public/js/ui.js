@@ -28,9 +28,11 @@ window.UI = (function() {
       }, duration);
     },
 
-    setTurnIndicator(playerNum, secsLeft) {
+    setTurnIndicator(playerNum, secsLeft, myPlayer) {
       const timeStr = secsLeft !== undefined ? ` (${secsLeft}s)` : '';
-      document.getElementById('turn-indicator').textContent = `Player ${playerNum}'s Turn${timeStr}`;
+      const isWaiting = myPlayer != null && playerNum !== myPlayer;
+      const text = isWaiting ? `Waiting for opponent...${timeStr}` : `Player ${playerNum}'s Turn${timeStr}`;
+      document.getElementById('turn-indicator').textContent = text;
       this.highlightPlayerLabel(playerNum);
     },
 

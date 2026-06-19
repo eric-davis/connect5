@@ -9,6 +9,8 @@ window.Renderer = {
   _offsetX: 0,
   _offsetY: 0,
   _hoveredCol: -1,
+  myPlayer: null,
+  gameMode: null,
 
   init(board) {
     this._board = board;
@@ -58,6 +60,13 @@ window.Renderer = {
 
   _handleMouseMove(e) {
     if (this.animating) return;
+    if (this.gameMode === 'online' && this.currentPlayer !== this.myPlayer) {
+      if (this._hoveredCol !== -1) {
+        this._hoveredCol = -1;
+        this.drawBoard(this._board);
+      }
+      return;
+    }
     const col = this._colFromEvent(e);
     const newHover = (col >= 0 && col < this._board.cols) ? col : -1;
     if (newHover !== this._hoveredCol) {
@@ -195,7 +204,7 @@ window.Renderer = {
       }
     }
 
-    if (this._hoveredCol >= 0) {
+    if (this._hoveredCol >= 0 && (this.gameMode !== 'online' || this.currentPlayer === this.myPlayer)) {
       const col = this._hoveredCol;
       const nextRow = board.colHeights[col];
       if (nextRow >= 0) {
