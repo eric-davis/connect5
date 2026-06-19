@@ -42,7 +42,7 @@ pids/
 # Playwright MCP logs and screenshots
 .playwright-mcp/
 *.png
-!connect5-classic.png
+!docs/connect5-classic.png
 
 # Node REPL history
 .node_repl_history

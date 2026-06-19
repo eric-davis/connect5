@@ -14,7 +14,7 @@ Browser-based Connect-5 game (5-in-a-row variant of Connect 4) with AI and onlin
 
 ## Screenshot
 
-![Gameplay](connect5-classic.png)
+![Gameplay](docs/connect5-classic.png)
 
 ## Tech Stack
 
